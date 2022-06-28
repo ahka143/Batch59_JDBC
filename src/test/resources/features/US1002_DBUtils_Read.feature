@@ -1,5 +1,5 @@
 Feature: US1002 kullanici DB Utils ile database'e baglanabilmeli
-
+@DBUtils
   Scenario: TC01 Kullanici database'deki bilgileri  okur
 
     Given kullanici DBUtils ile HMC veri tabanina baglanir
