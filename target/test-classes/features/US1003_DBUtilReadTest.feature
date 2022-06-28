@@ -1,4 +1,5 @@
-Feature: US1003 Kullanici DBUtil ile istenen degeri test eder
+Feature: US1003 Kullanici DBUtill ile istenen degeri test eder
+
 
   Scenario: TC03 Kullanici istenen degeri test edebilmeli
 

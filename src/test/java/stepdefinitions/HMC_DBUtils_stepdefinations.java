@@ -31,10 +31,10 @@ public class HMC_DBUtils_stepdefinations {
     @And("DBUtils ile tum {string} degerlerini sira numarasi ile yazdirir")
     public void dbutilsIleTumDegerleriniSiraNumarasiIleYazdirir(String field) throws SQLException {
         DBUtils.getResultset().last();
-        int sonSatirNo=DBUtils.getResultset().getRow();
+        int sonSatirNo = DBUtils.getResultset().getRow();
         DBUtils.getResultset().first();
         for (int i = 1; i <= sonSatirNo; i++) {
-            System.out.println(i+". kayit: "+DBUtils.getResultset().getString(field));
+            System.out.println(i + ". kayit: " + DBUtils.getResultset().getString(field));
             DBUtils.getResultset().next();
         }
 
@@ -43,9 +43,18 @@ public class HMC_DBUtils_stepdefinations {
     @Then("DBUtill ile {int}. {string} in {int} oldugunu test eder")
     public void dbutillIleInOldugunuTestEder(int istenenSiraNo, String field, int ExpectedDeger) throws SQLException {
         DBUtils.getResultset().absolute(2);
-        double actualDeger=DBUtils.getResultset().getDouble(field);
+        double actualDeger = DBUtils.getResultset().getDouble(field);
         System.out.println("actualDeger = " + actualDeger);
         System.out.println("ExpectedDeger = " + ExpectedDeger);
-        Assert.assertTrue(actualDeger==ExpectedDeger);
+        Assert.assertTrue(actualDeger == ExpectedDeger);
+    }
+
+    @Then("tHOTEL tablosunda IDHotel degeri {int} olan kaydin Email bilgisini {string} yapar")
+    public void thotelTablosundaIDHotelDegeriOlanKaydinEmailBilgisiniYapar(int idHotel, String yeniEmail) {
+
+        //update tHOTEL set Email ='sizOldunuz@gmail.com' where IDHotel=1016;
+        String updateQuery = "update tHOTEL set Email ='" + yeniEmail + "' where IDHotel=" + idHotel + ";";
+        DBUtils.executeQuery(updateQuery);
+
     }
 }
